@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Simple page</title>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <textarea rows='10' cols='50' id='tArea'>Write something here</textarea><br />
+        <button id='post'>Post</button>
+        <button id='get'>Get</button>
+
+        <script>
+            $( document ).ready(function() {
+                $( "#post" ).click(function() {
+                    var text = $( "#tArea" ).val();
+                    //var fileName = prompt("Give a file name", "Filename");
+                    //var pUrl = "http://localhost:3100/save/" + fileName;
+                    var jqxhr = $.post( "http://localhost:3100/go/", text, function() {
+                        alert( "success" );
+                    })
+                    .done(function() {
+                        alert( "second success" );
+                    })
+                    .fail(function() {
+                        //alert( "error" );
+                    })
+                    .always(function() {
+                        //alert( "finished" );
+                    });
+                });
+
+                $( "#get" ).click(function() {
+                    jQuery.ajax({
+                        url: "http://localhost:3100/data",
+                        type: "GET",
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(resultData) {
+                            alert("resultData:", resultData);
+                        },
+                        error : function(jqXHR, textStatus, errorThrown) {
+                            alert("error");
+                        },
+                        timeout: 120000
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>

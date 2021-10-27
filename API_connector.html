@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>API connector</title>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <button id='go'>Get data from API</button>
+
+        <script>
+            $( document ).ready(function() {
+                $( "#go" ).click(function() {
+                    /*
+                    $.getJSON('http://localhost:3100/data', function(data) {
+                        console.log("hey");
+                        alert(data);
+                    });
+                    */
+                    //alert( "success" );
+
+                    /*
+                    $.ajax({
+                        url: "http://localhost:3100/data",
+                        type: "GET",
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(resultData) {
+                            alert("well done!");
+                        },
+                        error : function(jqXHR, textStatus, errorThrown) {
+                            alert("error");
+                        },
+                        timeout: 120000
+                    });
+                    */
+
+                    /*
+                    $.get("http://localhost:3100/data", function(data, status){
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+                    */
+
+                    $.ajax({url: "http://localhost:3100/data", success: function(result){
+                        console.log("moro");
+                    }});
+                });
+            });
+        </script>
+
+    </body>
+</html>
